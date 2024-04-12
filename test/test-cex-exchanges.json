@@ -1,0 +1,53 @@
+[
+  {
+    "exchangeName": "mexc",
+    "apiKey": "",
+    "secretKey": "",
+    "pairs": [
+      "TRAVA/USDT",
+      "ORAIX/USDT",
+      "ETH/USDT",
+      "ETH/BTC",
+      "ETH/USDC",
+      "BTC/USDT",
+      "ETH/BTC",
+      "BTC/USDC",
+      "BTC/USDT",
+      "ETH/USDT",
+      "USDC/USDT",
+      "BTC/USDC",
+      "ETH/USDC",
+      "BNB/USDT",
+      "BNB/USDC"
+    ]
+  },
+  {
+    "exchangeName": "binance",
+    "apiKey": "",
+    "secretKey": "",
+    "pairs": [
+      "ETH/USDT",
+      "ETH/BTC",
+      "ETH/USDC",
+      "BNB/ETH",
+      "WBTC/ETH",
+      "BTC/USDT",
+      "ETH/BTC",
+      "BTC/USDC",
+      "BNB/BTC",
+      "WBTC/BTC",
+      "BTC/USDT",
+      "ETH/USDT",
+      "USDC/USDT",
+      "BNB/USDT",
+      "USDC/USDT",
+      "BTC/USDC",
+      "ETH/USDC",
+      "BNB/USDC",
+      "BNB/USDT",
+      "BNB/BTC",
+      "BNB/ETH",
+      "BNB/USDC"
+    ]
+  }
+]

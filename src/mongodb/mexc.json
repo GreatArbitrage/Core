@@ -1,0 +1,23 @@
+{
+    "exchangeName": "mexc",
+    "apiKey": "",
+    "secretKey": "",
+    "pairs": [
+        "TRAVA/USDT",
+        "ORAIX/USDT",
+        "VTC/USDT",
+        "AIAKITA/USDT",
+        "AWO/USDT",
+        "CYBONK/USDT",
+        "MINU/USDT",
+        "AINU/USDT",
+        "WAGMIGAMES/USDT",
+        "GONE/USDT",
+        "SPOL/USDT",
+        "SCB/USDT",
+        "PIT/USDT",
+        "CAGA/USDT",
+        "TRAVA/USDT",
+        "FREEDOM/USDT"
+    ]
+}

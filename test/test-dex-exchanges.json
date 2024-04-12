@@ -1,0 +1,138 @@
+[
+  {
+    "exchangeName": "pancakeswap-v2",
+    "chain": "bsc",
+    "pairs": [
+      {
+        "pairSymbol": "TRAVA/WBNB",
+        "exchangeName": "pancakeswap-v2",
+        "type": "dex",
+        "chain": "bsc",
+        "contractAddress": "0x865c77d4ff6383e06c58350a2cfb95cca2c0f056"
+      },
+      {
+        "pairSymbol": "ETH/WBNB",
+        "exchangeName": "pancakeswap-v2",
+        "type": "dex",
+        "chain": "bsc",
+        "contractAddress": "0x74e4716e431f45807dcf19f284c7aa99f18a4fbc"
+      }
+    ]
+  },
+  {
+    "exchangeName": "uniswap-v3",
+    "chain": "ethereum",
+    "pairs": [
+      {
+        "pairSymbol": "ORAIX/WETH",
+        "exchangeName": "uniswap-v3",
+        "type": "dex",
+        "chain": "ethereum",
+        "contractAddress": "0xdb66ab2d690de39fba2e24d103ebfb408f4a9b0e"
+      },
+      {
+        "pairSymbol": "WETH/USDT",
+        "exchangeName": "uniswap-v3",
+        "type": "dex",
+        "chain": "ethereum",
+        "contractAddress": "0x11b815efb8f581194ae79006d24e0d814b7697f6"
+      },
+      {
+        "pairSymbol": "USDC/WETH",
+        "exchangeName": "uniswap-v3",
+        "type": "dex",
+        "chain": "ethereum",
+        "contractAddress": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640"
+      },
+      {
+        "pairSymbol": "USDC/WETH",
+        "exchangeName": "uniswap-v3",
+        "type": "dex",
+        "chain": "ethereum",
+        "contractAddress": "0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8"
+      },
+      {
+        "pairSymbol": "USDC/USDT",
+        "exchangeName": "uniswap-v3",
+        "type": "dex",
+        "chain": "ethereum",
+        "contractAddress": "0x3416cf6c708da44db2624d63ea0aaef7113527c6"
+      },
+      {
+        "pairSymbol": "WBTC/USDC",
+        "exchangeName": "uniswap-v3",
+        "type": "dex",
+        "chain": "ethereum",
+        "contractAddress": "0x9a772018fbd77fcd2d25657e5c547baff3fd7d16"
+      },
+      {
+        "pairSymbol": "WBTC/USDC",
+        "exchangeName": "uniswap-v3",
+        "type": "dex",
+        "chain": "ethereum",
+        "contractAddress": "0x99ac8ca7087fa4a2a1fb6357269965a2014abc35"
+      },
+      {
+        "pairSymbol": "BNB/WETH",
+        "exchangeName": "uniswap-v3",
+        "type": "dex",
+        "chain": "ethereum",
+        "contractAddress": "0x9e7809c21ba130c1a51c112928ea6474d9a9ae3c"
+      }
+    ]
+  },
+  {
+    "exchangeName": "pancakeswap-v3",
+    "chain": "bsc",
+    "pairs": [
+      {
+        "pairSymbol": "ETH/WBNB",
+        "exchangeName": "pancakeswap-v3",
+        "type": "dex",
+        "chain": "bsc",
+        "contractAddress": "0xd0e226f674bbf064f54ab47f42473ff80db98cba"
+      },
+      {
+        "pairSymbol": "ETH/WBNB",
+        "exchangeName": "pancakeswap-v3",
+        "type": "dex",
+        "chain": "bsc",
+        "contractAddress": "0x7d05c84581f0c41ad80ddf677a510360bae09a5a"
+      },
+      {
+        "pairSymbol": "ETH/USDC",
+        "exchangeName": "pancakeswap-v3",
+        "type": "dex",
+        "chain": "bsc",
+        "contractAddress": "0x539e0ebfffd39e54a0f7e5f8fec40ade7933a664"
+      },
+      {
+        "pairSymbol": "USDT/WBNB",
+        "exchangeName": "pancakeswap-v3",
+        "type": "dex",
+        "chain": "bsc",
+        "contractAddress": "0x172fcd41e0913e95784454622d1c3724f546f849"
+      },
+      {
+        "pairSymbol": "USDT/USDC",
+        "exchangeName": "pancakeswap-v3",
+        "type": "dex",
+        "chain": "bsc",
+        "contractAddress": "0x92b7807bf19b7dddf89b706143896d05228f3121"
+      }
+    ]
+  },
+  {
+    "exchangeName": "uniswap-v2",
+    "chain": "ethereum",
+    "pairs": [
+      {
+        "pairSymbol": "USDC/WETH",
+        "exchangeName": "uniswap-v2",
+        "type": "dex",
+        "chain": "ethereum",
+        "contractAddress": "0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc"
+      }
+    ]
+  }
+]
