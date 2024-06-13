@@ -1,9 +1,9 @@
-import { BaseContract, BigNumber, BigNumberish, FixedNumber, ethers, providers as pd } from "ethers";
+import { BaseContract, BigNumber, BigNumberish, ethers, providers as pd } from "ethers";
 import { chains } from "../../config.js";
 import { Erc20__factory, Multicall__factory, UniswapV2__factory, UniswapV3__factory } from "./typechain-types/index.js";
-import { Pair } from "../../coin-market-cap/index.js";
+import { Pair } from "../../coin-market/coin-market-cap.js";
 import { formatUnits } from "ethers/lib/utils.js";
-
+import { Decimal } from 'decimal.js';
 
 
 const providers: { [key: string]: pd.BaseProvider } = {}
@@ -27,6 +27,11 @@ interface Multicall {
     callData: string;
 }
 
+export interface IDex {
+    name: string;
+    chain: string;
+    pairs: Pair[];
+}
 
 export class Dex {
     name: string;
@@ -60,6 +65,7 @@ export class Dex {
         this.updatePair(pairs);
         this.multicallContract = Multicall__factory.connect(chains[this.chain].multicallAddress, providers[this.chain]);
     }
+
 
     updatePair(pairs: Pair[]) {
         for (const pair of pairs) {
@@ -279,23 +285,28 @@ export class Dex {
         if (this.name == 'pancakeswap-v2' || this.name == 'uniswap-v2') {
             const decimals0 = this.data[pair].token0.decimals;
             const decimals1 = this.data[pair].token1.decimals;
-            const reserve0 = FixedNumber.from(formatUnits(this.data[pair].reserve0 || 1, decimals0));
-            const reserve1 = FixedNumber.from(formatUnits(this.data[pair].reserve1 || 1, decimals1));
+            const reserve0 = new Decimal(formatUnits(this.data[pair].reserve0 || 1, decimals0));
+            const reserve1 = new Decimal(formatUnits(this.data[pair].reserve1 || 1, decimals1));
             let isToken0 = this.data[pair].token0.symbol == pair.split('/')[0];
-            return isToken0 ? reserve1.divUnsafe(reserve0) : reserve0.divUnsafe(reserve1);
+            let u = reserve1.dividedBy(reserve0);
+            let v = reserve0.dividedBy(reserve1);
+            return isToken0 ? [u, v] : [v, u];
 
         }
         else if (this.name == 'pancakeswap-v3' || this.name == 'uniswap-v3') {
-            const sqrtPriceX96 = FixedNumber.from(this.data[pair].sqrtPricex96 || 0);
-            const twox192 = FixedNumber.from(BigNumber.from(2).pow(192).toString());
-            const price = sqrtPriceX96.mulUnsafe(sqrtPriceX96).divUnsafe(twox192);
-            const decimals0 = this.data[pair].token0.decimals;
-            const decimals1 = this.data[pair].token1.decimals;
+            const sqrtPriceX96 = new Decimal(this.data[pair].sqrtPricex96?.toString() || 0);
+            const twox192 = new Decimal(BigNumber.from(2).pow(192).toString());
+            const price = sqrtPriceX96.times(sqrtPriceX96).dividedBy(twox192);
+            const decimals0 = new Decimal(this.data[pair].token0.decimals.toString());
+            const decimals1 = new Decimal(this.data[pair].token1.decimals.toString());
             const isToken0 = this.data[pair].token0.symbol == pair.split('/')[0];
-            const ten = BigNumber.from(10);
-            const division = FixedNumber.from(ten.pow(decimals0).div(ten.pow(decimals1)).toString());
-            return isToken0 ? price.mulUnsafe(division) : division.divUnsafe(price);
+            const ten = new Decimal(10);
+            const division = new Decimal(ten.pow(decimals0).div(ten.pow(decimals1)));
+            let u = price.times(division);
+            let v = division.dividedBy(price);
+            return isToken0 ? [u, v] : [v, u];
         }
+        return [new Decimal(0), new Decimal(0)];
     }
 
     simulateTrade(pair: string, amount: BigNumberish, isBuy: boolean) {

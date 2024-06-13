@@ -1,22 +1,23 @@
 import { suite } from 'uvu';
 import { Dex } from '../../src/exchange/dex/index.js';
-import { readFile } from 'fs/promises';
 
 const DexTest = suite('Dex');
 
 DexTest('should create a new Dex instance and get price', async () => {
-    const pairs = JSON.parse(await readFile('./test/test-dex-exchanges.json', 'utf-8'));
-    const dexes: Dex[] = [];
-    for (const pair of pairs) {
-        const dex = new Dex(pair.exchangeName, pair.chain, pair.pairs);
-        dexes.push(dex);
-    }
-    Promise.all(dexes.map((dex) => dex.getData()));
+    const dex = new Dex('pancakeswap-v2', 'bsc', [
+        {
+            pairSymbol: "TRAVA/WBNB",
+            exchangeName: "pancakeswap-v2",
+            type: "dex",
+            chain: "bsc",
+            contractAddress: "0x865c77d4ff6383e06c58350a2cfb95cca2c0f056"
+        }
+    ]);
+    dex.getData();
     await new Promise(resolve => setTimeout(resolve, 5000));
-    const travaPrice = dexes.find(dex => dex.data['TRAVA/WBNB'])?.getPrice('TRAVA/WBNB');
-    console.log(travaPrice)
+    const res = dex.getPrice('TRAVA/WBNB');
+    console.log(res)
     return;
 });
 
-
-// DexTest.run();
+DexTest.run();
