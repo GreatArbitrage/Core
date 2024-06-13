@@ -93,3 +93,5 @@ export async function findArbitrage() {
             getPath('USDT', graph)
         ])
 }
+
+findArbitrage().catch((e) => console.log(e))

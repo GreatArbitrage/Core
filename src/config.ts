@@ -1,5 +1,5 @@
 export const queryTokens: string[] = ['trava-finance', 'oraidex']
-export const exchanges: string[] = ['mexc', 'binance', 'pancakeswap-v2', 'pancakeswap-v3', 'uniswap-v2', 'uniswap-v3', 'coinbase-exchange', 'okx', 'bybit', 'upbit', 'kraken', 'gate-io', 'htx', 'bitfinex', 'kucoin', 'bitget']
+export const exchanges: string[] = ['mexc', 'binance', 'pancakeswap-v2', 'pancakeswap-v3', 'uniswap-v2', 'uniswap-v3', 'okx', 'bybit', 'upbit', 'kraken', 'gate-io', 'htx', 'bitfinex', 'kucoin', 'bitget']
 export const chains: { [key: string]: { rpc: string, multicallAddress: string } } = {
     'ethereum': {
         rpc: 'https://eth.llamarpc.com',

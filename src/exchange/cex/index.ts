@@ -14,8 +14,8 @@ export class Cex {
     };
 
     constructor(name: string, apiKey: string, secretKey: string, pairSymbols: string[]) {
-        this.name = name
-        this.api = new pro[name as keyof typeof pro]({
+        this.name = name.split('-')[0]
+        this.api = new pro[this.name as keyof typeof pro]({
             apiKey: apiKey,
             secret: secretKey
         })
@@ -33,7 +33,7 @@ export class Cex {
         try {
             await Promise.all(Object.keys(this.data).map(async (symbol) => {
                 while (true) {
-                    const orderBook: OrderBook = await this.api.watchOrderBook(symbol, 10)
+                    const orderBook: OrderBook = await this.api.watchOrderBook(symbol)
                     const sortedBids = orderBook["bids"]?.map(([x, y]: [Num, Num]) => [x || 0, y || 0]).sort((a: number[], b: number[]) => b[0] - a[0])
                     const sortedAsks = orderBook["asks"]?.map(([x, y]: [Num, Num]) => [x || 0, y || 0]).sort((a: number[], b: number[]) => a[0] - b[0])
                     this.data[symbol].orderbook = {
@@ -85,7 +85,6 @@ export class Cex {
             const v = (new Decimal(1)).dividedBy(new Decimal(this.data[pair].orderbook.bids[0][0]))
             return [u, v]
         } catch (error) {
-            console.log(`Cex ${this.name} get price error`)
             return [new Decimal(0), new Decimal(0)];
         }
     }
